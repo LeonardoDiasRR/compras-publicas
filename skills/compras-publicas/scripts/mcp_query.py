@@ -1,11 +1,13 @@
-# Cliente stdio mínimo do MCP compras: python mcp_query.py <tool> '<json_args>'
-import json, subprocess, sys, itertools
+# Cliente stdio mínimo do MCP compras (uso fora de sessão Hermes com as tools).
+# Uso: python3 mcp_query.py <tool> '<json_args>'   |   python3 mcp_query.py _list
+# paths: ajustar BIN se o projeto não estiver em ~/projetos/compras-publicas
+import json, subprocess, sys
 
-cmd = ["/home/findface/projetos/compras-publicas/MCP_Compras/.venv/bin/compras-mcp"]
+BIN = "/home/findface/projetos/compras-publicas/MCP_Compras/.venv/bin/compras-mcp"
 tool = sys.argv[1]
 args = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
 
-p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+p = subprocess.Popen([BIN], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                      stderr=subprocess.DEVNULL, text=True)
 def send(obj):
     p.stdin.write(json.dumps(obj) + "\n"); p.stdin.flush()
@@ -22,18 +24,16 @@ read()
 send({"jsonrpc":"2.0","method":"notifications/initialized"})
 
 if tool == "_list":
-    d = read_id = 2
     send({"jsonrpc":"2.0","id":2,"method":"tools/list"})
-    r = read()
-    for t in r["result"]["tools"]:
-        print(t["name"], "|", (t.get("description") or "")[:120].replace("\n"," "))
+    for t in read()["result"]["tools"]:
+        print(t["name"], "|", (t.get("description") or "")[:120].replace("\n", " "))
 else:
     send({"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":tool,"arguments":args}})
     r = read()
     out = r.get("result", r.get("error"))
     if isinstance(out, dict) and "content" in out:
         for c in out["content"]:
-            print(c.get("text",""))
+            print(c.get("text", ""))
     else:
         print(json.dumps(out, ensure_ascii=False, indent=2))
 p.kill()

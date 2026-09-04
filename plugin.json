@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "compras-publicas",
+  "version": "0.1.0",
+  "description": "Plugin de pesquisa em compras e contratações públicas federais (Compras.gov.br, PNCP, Portal da Transparência): MCP_Compras com ~96 tools somente-leitura + skills de receitas de pesquisa e pitfalls.",
+  "author": {
+    "name": "Leonardo Dias (Operação Mitra)",
+    "url": "https://github.com/LeonardoDiasRR/compras-publicas"
+  },
+  "homepage": "https://github.com/LeonardoDiasRR/compras-publicas",
+  "repository": "https://github.com/LeonardoDiasRR/compras-publicas",
+  "keywords": ["compras-gov-br", "pncp", "arp", "catmat", "licitacoes", "transparencia"]
+}
