@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "compras": {
+      "command": "<ABS>/MCP_Compras/.venv/bin/compras-mcp",
+      "cwd": "<ABS>/MCP_Compras",
+      "env": {}
+    }
+  }
+}
