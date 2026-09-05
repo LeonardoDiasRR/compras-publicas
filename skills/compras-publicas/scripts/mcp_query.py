@@ -11,7 +11,8 @@ BIN = os.environ.get("COMPRAS_MCP_BIN") or next(
      if os.path.exists(p)),
 )
 tool = sys.argv[1]
-args = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
+_raw = sys.argv[2] if len(sys.argv) > 2 else "{}"
+args = json.loads(open(_raw[1:], encoding="utf-8").read() if _raw.startswith("@") else _raw)
 
 p = subprocess.Popen([BIN], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                      stderr=subprocess.DEVNULL, text=True, encoding="utf-8")
