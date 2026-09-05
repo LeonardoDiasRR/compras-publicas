@@ -75,8 +75,9 @@ hermes plugins enable compras-publicas
 7. **Conversor doc2md** (`doc2md/`, vendorado de
    github.com/LeonardoDiasRR/doc2md): todo anexo de contratação/ARP (TR, edital,
    ata — PDF/docx/xlsx/zip) deve ser convertido para Markdown **antes** da
-   leitura. No Windows: `doc2md/.venv/Scripts/python.exe
-   doc2md/scripts/convert2md.py <arquivo> --engine markitdown -o <saida>.md`
+   leitura. Comando: `doc2md/.venv/bin/python doc2md/scripts/convert2md.py
+   <arquivo> --engine markitdown -o <saida>.md` (Linux; no Windows use
+   `doc2md/.venv/Scripts/python.exe`)
    (paddle/anydoc não instalados aqui; PDF de banco tem camada de texto e o
    markitdown resolve; escaneado exigiria PaddleOCR — ver `skills/doc2md/SKILL.md`
    e `doc2md/references/install.md`).

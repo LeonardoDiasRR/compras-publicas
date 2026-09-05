@@ -9,16 +9,20 @@ Conversor vendorado em `doc2md/` (repo LeonardoDiasRR/doc2md). Converter SEMPRE
 para Markdown antes de ler anexos de contratações/ARPs (PDF, docx, xlsx, zip,
 html...) — nunca tentar "ler" o binário diretamente.
 
-## Como chamar (Windows — esta máquina)
+## Como chamar (o wrapper bash `scripts/convert2md` é Linux-only; chame o python do venv)
 
-O wrapper bash `scripts/convert2md` é Linux; no Windows chame o python do venv:
+```bash
+# Linux
+PY=doc2md/.venv/bin/python
+# Windows (PowerShell)
+# $PY = "doc2md/.venv/Scripts/python.exe"
 
-```powershell
-$D2M = "doc2md/.venv/Scripts/python.exe"
-& $D2M doc2md/scripts/convert2md.py TR.pdf -o TR.md          # PDF com camada de texto
-& $D2M doc2md/scripts/convert2md.py edital.docx -d out/      # lote -> out/*.md
-& $D2M doc2md/scripts/convert2md.py doc.docx                 # md no stdout
+& $PY doc2md/scripts/convert2md.py TR.pdf -o TR.md --engine markitdown   # PDF com camada de texto
+& $PY doc2md/scripts/convert2md.py edital.docx -d out/                    # lote -> out/*.md
+& $PY doc2md/scripts/convert2md.py doc.docx                               # md no stdout
 ```
+
+Instalação do venv (clone novo): `cd doc2md && uv venv .venv && uv pip install -p .venv "markitdown[pdf,docx,pptx,xlsx]"`
 
 ## Roteamento de motores
 

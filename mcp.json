@@ -3,7 +3,8 @@
   "mcpServers": {
     "compras": {
       "type": "stdio",
-      "command": "./MCP_Compras/.venv/bin/compras-mcp",
+      "command": "uv",
+      "args": ["run", "compras-mcp"],
       "cwd": "./MCP_Compras"
     }
   }
