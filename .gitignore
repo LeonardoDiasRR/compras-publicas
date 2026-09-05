@@ -3,3 +3,5 @@ MCP_Compras/dist/
 MCP_Compras/uv.lock.bak
 .env
 __pycache__/
+opencode.json
+teste_ceis.json

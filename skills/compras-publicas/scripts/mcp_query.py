@@ -3,12 +3,18 @@
 # paths: ajustar BIN se o projeto não estiver em ~/projetos/compras-publicas
 import json, subprocess, sys
 
-BIN = "/home/findface/projetos/compras-publicas/MCP_Compras/.venv/bin/compras-mcp"
+import os
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+BIN = os.environ.get("COMPRAS_MCP_BIN") or next(
+    (p for p in (os.path.join(_ROOT, "MCP_Compras", ".venv", "Scripts", "compras-mcp.exe"),
+                 os.path.join(_ROOT, "MCP_Compras", ".venv", "bin", "compras-mcp"))
+     if os.path.exists(p)),
+)
 tool = sys.argv[1]
 args = json.loads(sys.argv[2]) if len(sys.argv) > 2 else {}
 
 p = subprocess.Popen([BIN], stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                     stderr=subprocess.DEVNULL, text=True)
+                     stderr=subprocess.DEVNULL, text=True, encoding="utf-8")
 def send(obj):
     p.stdin.write(json.dumps(obj) + "\n"); p.stdin.flush()
 def read():
