@@ -13,10 +13,14 @@ Constituído pelo servidor **MCP_Compras** (~96 tools somente-leitura) +
 compras-publicas/
 ├── plugin.json                  # manifesto do plugin portável (Agent Plugins v1)
 ├── mcp.json                     # registra o MCP stdio quando o plugin está habilitado
-├── skills/compras-publicas/     # skill ÚNICA do plugin (fonte canônica)
+├── skills/compras-publicas/     # skill de receitas (fonte canônica)
 │   ├── SKILL.md                 #   receitas ARP/CATMAT/UASG/PNCP/anexos/preços + pitfalls
 │   ├── references/              #   pncp-arquivos-api.md, contribuir-pr.md
 │   └── scripts/mcp_query.py     #   cliente stdio JSON-RPC (uso fora de sessão Hermes)
+├── skills/doc2md/               # skill de conversão doc→MD (uso dos anexos)
+├── doc2md/                      # conversor vendorado (github.com/LeonardoDiasRR/doc2md)
+│   ├── scripts/convert2md.py    #   CLI; wrapper bash só funciona em Linux
+│   └── .venv/                   #   markitdown instalado; paddle/anydoc não (ver skill)
 ├── MCP_Compras/                 # servidor MCP vendorado (sem .git upstream)
 │   ├── CLAUDE.md                #   convenções internas do servidor (SSoT, envelope, cache)
 │   ├── .venv/                   #   uv sync; binário: .venv/bin/compras-mcp
@@ -68,6 +72,14 @@ hermes plugins enable compras-publicas
 6. Varreduras longas (>5 min): background com notify; nunca encaminhar saída
    de rede para interpretador (`| python3`) — salvar em arquivo e processar
    depois.
+7. **Conversor doc2md** (`doc2md/`, vendorado de
+   github.com/LeonardoDiasRR/doc2md): todo anexo de contratação/ARP (TR, edital,
+   ata — PDF/docx/xlsx/zip) deve ser convertido para Markdown **antes** da
+   leitura. No Windows: `doc2md/.venv/Scripts/python.exe
+   doc2md/scripts/convert2md.py <arquivo> --engine markitdown -o <saida>.md`
+   (paddle/anydoc não instalados aqui; PDF de banco tem camada de texto e o
+   markitdown resolve; escaneado exigiria PaddleOCR — ver `skills/doc2md/SKILL.md`
+   e `doc2md/references/install.md`).
 
 ## Verificação rápida
 

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Wrapper do convert2md: roda com o venv local da skill.
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec "$DIR/../.venv/bin/python" "$DIR/convert2md.py" "$@"

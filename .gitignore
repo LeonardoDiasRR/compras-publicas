@@ -5,3 +5,5 @@ MCP_Compras/uv.lock.bak
 __pycache__/
 opencode.json
 teste_ceis.json
+
+doc2md/.venv/
