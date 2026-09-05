@@ -1,6 +1,6 @@
 ---
 name: compras-publicas
-description: "Use when querying compras públicas federais: Compras.gov.br, PNCP, ARP, CATMAT, sanções CGU via MCP compras. Recipes, pitfalls, anexos/TR."
+description: "Use ao consultar compras públicas federais: Compras.gov.br, PNCP, ARP, CATMAT, sanções CGU via MCP compras. Receitas, armadilhas, anexos/TR."
 ---
 
 # Compras Públicas (MCP_Compras + skills da Operação Mitra)

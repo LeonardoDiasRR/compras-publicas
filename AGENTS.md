@@ -17,6 +17,7 @@ compras-publicas/
 │   ├── SKILL.md                 #   receitas ARP/CATMAT/UASG/PNCP/anexos/preços + pitfalls
 │   ├── references/              #   pncp-arquivos-api.md, contribuir-pr.md
 │   └── scripts/mcp_query.py     #   cliente stdio JSON-RPC (uso fora de sessão Hermes)
+├── skills/anexos-pncp/          # skill: baixar/descompactar/converter p/ MD os arquivos de contratações e ARPs
 ├── skills/doc2md/               # skill de conversão doc→MD (uso dos anexos)
 ├── doc2md/                      # conversor vendorado (github.com/LeonardoDiasRR/doc2md)
 │   ├── scripts/convert2md.py    #   CLI; wrapper bash só funciona em Linux

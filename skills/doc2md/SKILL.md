@@ -1,6 +1,6 @@
 ---
 name: doc2md
-description: "Use before reading any downloaded contracting document (anexos PNCP: TR, edital, ata, ARP PDFs, docx/xlsx/zip): convert to Markdown with doc2md convert2md.py, then read the .md. Covers Windows invocation and engine routing."
+description: "Use antes de ler qualquer documento de contratação baixado (anexos PNCP: TR, edital, ata, PDFs de ARP, docx/xlsx/zip): converta para Markdown com o doc2md convert2md.py e depois leia o .md. Cobre invocação no Windows e escolha de motor."
 ---
 
 # doc2md — conversão de documentos para Markdown (leitura por LLM)
